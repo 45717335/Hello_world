@@ -4,7 +4,7 @@ Option Explicit
 Attribute VB_Name = "Excel_VBA"
 Option Explicit
 
-Function open_wb(ByRef wb As Workbook, ByVal flfp As String) As Boolean
+Function open_wb(ByRef wb As Workbook, ByVal flfp As String, Optional read_only_nomacro As Boolean = False) As Boolean
     '==========================================================
     'Open File(*.xls*):  Microsoft Excel
     '==========================================================
@@ -27,7 +27,15 @@ Function open_wb(ByRef wb As Workbook, ByVal flfp As String) As Boolean
         If Dir(flp & fln) <> "" Then
 
             On Error GoTo Error1:
-            Set wb = Workbooks.Open(flp & fln)
+
+            If read_only_nomacro = False Then
+                Set wb = Workbooks.Open(flp & fln)
+            Else
+                Application.AutomationSecurity = msoAutomationSecurityForceDisable
+                Set wb = Workbooks.Open(flp & fln, False, True)
+                Application.AutomationSecurity = msoAutomationSecurityLow
+            End If
+
 
             temp_b = True
         End If
