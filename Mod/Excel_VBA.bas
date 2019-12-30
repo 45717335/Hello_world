@@ -88,7 +88,7 @@ End Function
 
 Function open_wb2(ByRef wb As Workbook, ByVal flfp As String) As Boolean
 '==========================================================
-'ÔÚÐÂ´°¿ÚÖÐ´ò¿ª workbook
+'åœ¨æ–°çª—å£ä¸­æ‰“å¼€ workbook
 '==========================================================
 open_wb2 = False
 
@@ -131,7 +131,7 @@ End Function
 
 Function Close_wb2(ByRef wb As Workbook) As Boolean
 '==========================================================
-'ÔÚÐÂ´°¿ÚÖÐ´ò¿ª workbook
+'åœ¨æ–°çª—å£ä¸­æ‰“å¼€ workbook
 '==========================================================
 On Error GoTo ErrorHand
 Dim app As Object
@@ -150,7 +150,7 @@ End Function
 
 
 Function get_bomlastrow(ws As Worksheet) As Integer
-'»ñÈ¡bomÖÐ×îºóÒ»ÐÐ
+'èŽ·å–bomä¸­æœ€åŽä¸€è¡Œ
 On Error GoTo ErrorHand
 Dim i As Integer
 Dim i_lastrow As Integer
@@ -167,7 +167,7 @@ Err.Clear
 
 End Function
 Function Str_TO_Num(in_s As String, ByRef out_i As Integer) As Boolean
-'±¾º¯ÊýÓÃÓÚ×Ö·û´®×ªÊý×Ö
+'æœ¬å‡½æ•°ç”¨äºŽå­—ç¬¦ä¸²è½¬æ•°å­—
 On Error GoTo ErrorHand
 Str_TO_Num = True
 out_i = CInt(in_s)
@@ -178,7 +178,7 @@ Str_TO_Num = False
 Err.Clear
 End Function
 Function Sort_BOM(ws As Worksheet, Optional start_r As Integer = 11, Optional key_col As String = "A") As Boolean
-'±¾º¯Êý±í¸ñÅÅÐò
+'æœ¬å‡½æ•°è¡¨æ ¼æŽ’åº
 On Error GoTo ErrorHand
 Sort_BOM = False
 ws.Activate
@@ -224,12 +224,12 @@ ws.Range("C1") = "SIZE"
 ws.Range("D1") = "DATE"
 ws.Range("E1") = "FLN"
 ws.Range("F1") = "CUSTID"
-'G1,ÓÃÓÚÄæÏò¼ì²éÍêÕûÐÔ£¬¼´ËùÓÐ³öÏÖµÄBOM±í»òÕßÍ¼Ö½£¬¶¼Ó¦¸ÃÔÚ×ÜBOM»ò×ÓBOMÖÐ³öÏÖ
+'G1,ç”¨äºŽé€†å‘æ£€æŸ¥å®Œæ•´æ€§ï¼Œå³æ‰€æœ‰å‡ºçŽ°çš„BOMè¡¨æˆ–è€…å›¾çº¸ï¼Œéƒ½åº”è¯¥åœ¨æ€»BOMæˆ–å­BOMä¸­å‡ºçŽ°
 'G1=YES,G1=NO
 ws.Range("G1") = "USED"
 
-'20150609_xuefeng.gao@thyssenkrupp.com Ôö¼Ó
-'H1,±êÖ¾ µÚ¼¸Ò³_¹²¼¸Ò³£¬
+'20150609_xuefeng.gao@thyssenkrupp.com å¢žåŠ 
+'H1,æ ‡å¿— ç¬¬å‡ é¡µ_å…±å‡ é¡µï¼Œ
 'H1=1_1
 'H1=1_2,H1=2_2
 'H1=1_3,H1=2_3,H1=3_3
@@ -237,8 +237,8 @@ ws.Range("G1") = "USED"
 'H1=NOT_UNIQUE
 ws.Range("H1") = "SHEETS_NUM"
 
-'20150623 ÐÂÔö3ÁÐÓÃÓÚµ¼³öºÍ×ª»»¿Í»§¸ñÊ½
-'·Ö±ðÊÇ£ºCUST_STATUS,CUST_FDN,CUST_FLN
+'20150623 æ–°å¢ž3åˆ—ç”¨äºŽå¯¼å‡ºå’Œè½¬æ¢å®¢æˆ·æ ¼å¼
+'åˆ†åˆ«æ˜¯ï¼šCUST_STATUS,CUST_FDN,CUST_FLN
 ws.Range("I1") = "CUST_STATUS"
 ws.Range("J1") = "CUST_FDN"
 ws.Range("K1") = "CUST_FLN"
@@ -246,11 +246,11 @@ ws.Range("K1") = "CUST_FLN"
 
     
     
-'20150624 ÐÂÔöÒ»ÁÐÓÃÓÚ´æ·Å¿É×ªÎª¿Í»§¸ñÊ½µÄÖÐ¼äÆ·
+'20150624 æ–°å¢žä¸€åˆ—ç”¨äºŽå­˜æ”¾å¯è½¬ä¸ºå®¢æˆ·æ ¼å¼çš„ä¸­é—´å“
 ws.Range("L1") = "TRANS_INPUT"
 ws.Range("M1") = "TRANS_OUTPUT"
 
-'20150710,ÓÉÓÚNÁÐ×îÖÕÒª·Å CATIA2DµÄÎÄ¼þÈ«Â·¾¶
+'20150710,ç”±äºŽNåˆ—æœ€ç»ˆè¦æ”¾ CATIA2Dçš„æ–‡ä»¶å…¨è·¯å¾„
 ws.Range("N1") = "FLFP_DRAWING"
 
 ws.Range("O1") = "OP_NUM"
@@ -269,7 +269,7 @@ End Function
 
 
 Function BOM_LIST_Add(ws As Worksheet, fdn As String) As Boolean
-'±¾º¯ÊýÓÃÓÚ½«Ö¸¶¨ÎÄ¼þÀïÃæµÄBOM±íÌí¼ÓÖÁÖ¸¶¨¹¤×÷²¾ÖÐ
+'æœ¬å‡½æ•°ç”¨äºŽå°†æŒ‡å®šæ–‡ä»¶é‡Œé¢çš„BOMè¡¨æ·»åŠ è‡³æŒ‡å®šå·¥ä½œç°¿ä¸­
 'A1=FLFP_BOM;   B1=TKID;    C1D1E1=SIZE;DATE;FLN;
 Dim fso As Object
 Set fso = CreateObject("Scripting.FileSystemObject")
@@ -294,26 +294,26 @@ End Function
 
 
 Function TKID_UNIQUE_CHECK(ws As Worksheet, Optional FLFP_COL As Integer = 1, Optional TKID_COL As Integer = 2, Optional SHEETS_NUM_COL As Integer = 8) As Boolean
-'±¾º¯ÊýÓÃÓÚÑéÖ¤Ò»ÕÅ±íÖÐËùÁÐÎÄ¼þµÄÎ©Ò»ÐÔ
-'µÚÒ»²½£¬ÊäÈëÑéÖ¤£¬°üÀ¨ FLFP_COL,TKID_COL,µÄ±íÍ·ÁÐÊÇ·ñ·Ö±ðÊÇ "FLFP*","TKID*"
-'µÚ¶þ²½£¬ÊäÈëÈËÑéÖ¤£¬°üÀ¨ws±íÖÐÊÇ·ñº¬ÓÐ±íÍ·£¬"SIZE*","DATE*","FLN*"
-'µÚÈý²½£¬°´ÕÕ¡°TKID¡±´ÓÐ¡µ½´ó½øÐÐÅÅÐò
-'µÚËÄ²½£¬·Ö±ðÌîÐ´ SHEETS_NUM_COL ÁÐÖÐËùÓÐµÄ¿ÉÄÜ
-'Çé¿ö1£º1_1,±íÊ¾£¬±íÖÐÄ³¸öTKIDÖ»ÓÐÒ»·ÝÎÄ¼þÓëÆä¶ÔÓ¦
-'Çé¿ö2£º"DUPLICATE",±íÖÐÄ³¸öTKID¶ÔÓ¦¶à¸öÎÄ¼þ£¬ºóÃæµÄÎÄ¼þºÍÇ°ÃæSIZE£¬DATE£¬FLNÍêÈ«ÏàÍ¬£¬ËµÃ÷ÊÇ¸±±¾±êÖ¾Îª¡°DUPLICATE¡±
-'Çé¿ö3£º³ýÈ¥"DUPLICATE"ºó½öÓÐÒ»¸öÎÄ¼þ£¬°´ÕÕÇé¿ö1ÌîÐ´
-'Çé¿ö4£º³ýÈ¥"DUPLICATE"ºóÓÐ¶àÓà1¸öµÄÎÄ¼þ£¬Èç¹ûÕâÐ©ÎÄ¼þ²»ÔÚÍ¬Ò»¸ö×ÓÄ¿Â¼ÏÂ£¬±êÖ¾Îª"NOT_UNIQUE"
-'Çé¿ö5£º³ýÈ¥"DUPLICATE"ºóÓÐ¶àÓà1¸öµÄÎÄ¼þ£¬Èç¹ûÕâÐ©ÎÄ¼þÔÚÍ¬Ò»¸ö×ÓÄ¿Â¼ÏÂ£¬ÒÀ´Î±êÖ¾"1_2,2_2"»òÕß"1_3,2_3,3_3"»òÕß...
+'æœ¬å‡½æ•°ç”¨äºŽéªŒè¯ä¸€å¼ è¡¨ä¸­æ‰€åˆ—æ–‡ä»¶çš„æƒŸä¸€æ€§
+'ç¬¬ä¸€æ­¥ï¼Œè¾“å…¥éªŒè¯ï¼ŒåŒ…æ‹¬ FLFP_COL,TKID_COL,çš„è¡¨å¤´åˆ—æ˜¯å¦åˆ†åˆ«æ˜¯ "FLFP*","TKID*"
+'ç¬¬äºŒæ­¥ï¼Œè¾“å…¥äººéªŒè¯ï¼ŒåŒ…æ‹¬wsè¡¨ä¸­æ˜¯å¦å«æœ‰è¡¨å¤´ï¼Œ"SIZE*","DATE*","FLN*"
+'ç¬¬ä¸‰æ­¥ï¼ŒæŒ‰ç…§â€œTKIDâ€ä»Žå°åˆ°å¤§è¿›è¡ŒæŽ’åº
+'ç¬¬å››æ­¥ï¼Œåˆ†åˆ«å¡«å†™ SHEETS_NUM_COL åˆ—ä¸­æ‰€æœ‰çš„å¯èƒ½
+'æƒ…å†µ1ï¼š1_1,è¡¨ç¤ºï¼Œè¡¨ä¸­æŸä¸ªTKIDåªæœ‰ä¸€ä»½æ–‡ä»¶ä¸Žå…¶å¯¹åº”
+'æƒ…å†µ2ï¼š"DUPLICATE",è¡¨ä¸­æŸä¸ªTKIDå¯¹åº”å¤šä¸ªæ–‡ä»¶ï¼ŒåŽé¢çš„æ–‡ä»¶å’Œå‰é¢SIZEï¼ŒDATEï¼ŒFLNå®Œå…¨ç›¸åŒï¼Œè¯´æ˜Žæ˜¯å‰¯æœ¬æ ‡å¿—ä¸ºâ€œDUPLICATEâ€
+'æƒ…å†µ3ï¼šé™¤åŽ»"DUPLICATE"åŽä»…æœ‰ä¸€ä¸ªæ–‡ä»¶ï¼ŒæŒ‰ç…§æƒ…å†µ1å¡«å†™
+'æƒ…å†µ4ï¼šé™¤åŽ»"DUPLICATE"åŽæœ‰å¤šä½™1ä¸ªçš„æ–‡ä»¶ï¼Œå¦‚æžœè¿™äº›æ–‡ä»¶ä¸åœ¨åŒä¸€ä¸ªå­ç›®å½•ä¸‹ï¼Œæ ‡å¿—ä¸º"NOT_UNIQUE"
+'æƒ…å†µ5ï¼šé™¤åŽ»"DUPLICATE"åŽæœ‰å¤šä½™1ä¸ªçš„æ–‡ä»¶ï¼Œå¦‚æžœè¿™äº›æ–‡ä»¶åœ¨åŒä¸€ä¸ªå­ç›®å½•ä¸‹ï¼Œä¾æ¬¡æ ‡å¿—"1_2,2_2"æˆ–è€…"1_3,2_3,3_3"æˆ–è€…...
 
-'µÚÒ»²½
+'ç¬¬ä¸€æ­¥
 If ws.Cells(1, FLFP_COL) Like "FLFP*" And ws.Cells(1, TKID_COL) Like "TKID*" Then
 Else
 TKID_UNIQUE_CHECK = False
-MsgBox "ÎÞ·¨½øÐÐÎ©Ò»ÐÔ¼ì²é£¬ÒòÎªËùÖ¸¶¨ÁÐ²»°üº¬ ÎÄ¼þÈ«Â·¾¶£¬»òÕß²»°üº¬TKID"
+MsgBox "æ— æ³•è¿›è¡ŒæƒŸä¸€æ€§æ£€æŸ¥ï¼Œå› ä¸ºæ‰€æŒ‡å®šåˆ—ä¸åŒ…å« æ–‡ä»¶å…¨è·¯å¾„ï¼Œæˆ–è€…ä¸åŒ…å«TKID"
 Exit Function
 End If
 
-'µÚ¶þ²½
+'ç¬¬äºŒæ­¥
 Dim SIZE_COL As Integer, DATE_COL As Integer, FLN_COL As Integer
 Dim i As Integer
 For i = 1 To ws.UsedRange.Columns.Count
@@ -327,10 +327,10 @@ Else
 End If
 Next
 
-'µÚÈý²½
+'ç¬¬ä¸‰æ­¥
 sort_ws ws, GetColName(TKID_COL) & "1", 2
 
-'µÚËÄ²½
+'ç¬¬å››æ­¥
 Dim j As Long, j_lastrow As Long
 Dim k As Long
 j_lastrow = ws.UsedRange.Rows(ws.UsedRange.Rows.Count).row
@@ -342,12 +342,12 @@ k = k + 1
 End If
 Loop
 
-'Çé¿ö1
+'æƒ…å†µ1
 If k = 1 Then
 ws.Cells(j, SHEETS_NUM_COL) = "1_1"
 Else
 
-'Çé¿ö2
+'æƒ…å†µ2
 Dim numofdup As Integer
 numofdup = 0
 Dim l As Integer
@@ -357,22 +357,22 @@ m = 0
 For l = 0 To k - 1
 For m = l + 1 To k
 If ws.Cells(j + l, SHEETS_NUM_COL) <> "DUPLICATE" Then
-'Èç¹ûÃû³Æ£¬´óÐ¡£¬×îºóÐÞ¸ÄÈÕÆÚ¶¼Ò»ÑùËµÃ÷ÊÇ¸±±¾
+'å¦‚æžœåç§°ï¼Œå¤§å°ï¼Œæœ€åŽä¿®æ”¹æ—¥æœŸéƒ½ä¸€æ ·è¯´æ˜Žæ˜¯å‰¯æœ¬
 If ws.Cells(j + l, SIZE_COL) = ws.Cells(j + m, SIZE_COL) And ws.Cells(j + l, DATE_COL) = ws.Cells(j + m, DATE_COL) And ws.Cells(j + l, FLN_COL) = ws.Cells(j + m, FLN_COL) Then
 ws.Cells(j + m, SHEETS_NUM_COL) = "DUPLICATE"
 numofdup = numofdup + 1
 End If
-'Èç¹ûÃû³Æ£¬´óÐ¡£¬×îºóÐÞ¸ÄÈÕÆÚ¶¼Ò»ÑùËµÃ÷ÊÇ¸±±¾
+'å¦‚æžœåç§°ï¼Œå¤§å°ï¼Œæœ€åŽä¿®æ”¹æ—¥æœŸéƒ½ä¸€æ ·è¯´æ˜Žæ˜¯å‰¯æœ¬
 End If
 Next
 Next
 
-'Çé¿ö£³
+'æƒ…å†µï¼“
 If 1 = k - numofdup Then
 ws.Cells(j, SHEETS_NUM_COL) = "1_1"
 Else
 
-'Çé¿ö4:
+'æƒ…å†µ4:
 Dim unique_b As Boolean
 unique_b = True
 Dim n As Integer
@@ -396,7 +396,7 @@ If unique_b = False Then
     Next
 Else
 
-'Çé¿ö£µ
+'æƒ…å†µï¼•
     Dim total_sheet As Integer
     total_sheet = k - numofdup
     Dim cur_sheet As Integer
@@ -437,9 +437,9 @@ End Function
 
 
 Function WS_ROW_DEL(ws As Worksheet, col_name As String, TPF_str As String, Optional row_start As Long = 2) As Boolean
-'2015 06 23 ´ÓÀäÊÔÉè±¸Í¼Ö½¼ì²éÖÐÒÆÖ²»ØÀ´
+'2015 06 23 ä»Žå†·è¯•è®¾å¤‡å›¾çº¸æ£€æŸ¥ä¸­ç§»æ¤å›žæ¥
 
-'É¾³ý Ö¸¶¨¹¤×÷±íÖÐ£¬Ö¸¶¨ÁÐÖÐ °üº¬Ö¸¶¨Í¨Åä·ûµÄÐÐ
+'åˆ é™¤ æŒ‡å®šå·¥ä½œè¡¨ä¸­ï¼ŒæŒ‡å®šåˆ—ä¸­ åŒ…å«æŒ‡å®šé€šé…ç¬¦çš„è¡Œ
 If Len(TPF_str) <= 1 Then
 Exit Function
 End If
@@ -498,7 +498,7 @@ End If
 End Function
 
 Function GetColName(ByVal intCol As Long) As String
-'ÁÐºÅ×ªÁÐÃû
+'åˆ—å·è½¬åˆ—å
 If InStr(CStr(Application.Version), "11") > 0 And intCol >= 1 And intCol <= 256 Then
     GetColName = Split(Workbooks(1).Worksheets(1).Cells(1, intCol).Address, "$")(1)
 ElseIf InStr(CStr(Application.Version), "12") > 0 And intCol >= 1 And intCol <= 16384 Then
