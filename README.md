@@ -1,7 +1,7 @@
 ## Mod Function
 ### Excel_VBA.bas
 
-'''vba
+'''basic
 '打开工作簿
 Function open_wb(ByRef wb As Workbook, ByVal flfp As String) As Boolean
 '取得工作表
